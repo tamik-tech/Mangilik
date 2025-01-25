@@ -18,7 +18,7 @@
     <button class="cta-button">Присоединиться</button>
   </main>
   <footer>
-    <p>© 2025 Mangilik Club. Все права защищены.</p>
+    <p>© 2025 Mangilik Club. Создаём будущее .</p>
   </footer>
 </body>
 </html>
