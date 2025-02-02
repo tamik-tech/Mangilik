@@ -3,160 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Дебатный клуб Mangilik</title>
+    <title>Дебатный клуб</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            background-color: #fff;
+            color: #000;
+            line-height: 1.6;
         }
         header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 20px;
+            background-color: #000;
+            color: #fff;
+            padding: 1rem 0;
             text-align: center;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 3px;
+            animation: fadeIn 2s ease-in-out;
         }
         nav {
-            background-color: #34495e;
-            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
         }
         nav a {
-            color: white;
-            padding: 14px 20px;
             text-decoration: none;
-            float: left;
-            display: block;
-            text-align: center;
+            color: #fff;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
         }
         nav a:hover {
-            background-color: #1abc9c;
+            color: #ff5733;
         }
-        .container {
-            width: 80%;
-            margin: 0 auto;
-        }
-        .section {
-            padding: 40px 0;
-        }
-        .section h2 {
+        section {
+            padding: 2rem 1rem;
             text-align: center;
-            color: #2c3e50;
         }
-        .cards {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-        .card {
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            width: 30%;
-            margin-bottom: 20px;
+        .team-member {
+            margin: 1rem;
+            padding: 1rem;
+            background-color: #f4f4f4;
             border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
         }
-        .card:hover {
-            transform: scale(1.05);
-        }
-        .card img {
-            width: 100%;
-            height: auto;
-        }
-        .card-content {
-            padding: 20px;
-        }
-        .card h3 {
-            margin: 0;
-            color: #34495e;
+        .team-member:hover {
+            transform: translateY(-10px);
         }
         footer {
-            background-color: #2c3e50;
-            color: white;
+            background-color: #000;
+            color: #fff;
             text-align: center;
-            padding: 20px;
-            position: relative;
+            padding: 1rem 0;
+            position: fixed;
             bottom: 0;
             width: 100%;
+        }
+        .animation-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+        .animation-container div {
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+            background-color: #000;
+            border-radius: 50%;
+            animation: bounce 0.6s infinite alternate;
+        }
+        .animation-container div:nth-child(1) {
+            animation-delay: 0s;
+        }
+        .animation-container div:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .animation-container div:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-20px);
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Добро пожаловать в Дебатный клуб Mangilik!</h1>
-        <p>Развиваем искусство аргументации и публичных выступлений</p>
+        <h1>Дебатный клуб</h1>
+        <nav>
+            <a href="#">Главная</a>
+            <a href="#">О нас</a>
+            <a href="#">События</a>
+            <a href="#">Контакты</a>
+        </nav>
     </header>
 
-    <nav>
-        <a href="#">Главная</a>
-        <a href="#">О клубе</a>
-        <a href="#">Мероприятия</a>
-        <a href="#">Статьи</a>
-        <a href="#">Контакты</a>
-    </nav>
+    <section>
+        <h2>О клубе</h2>
+        <p>Мы — группа энтузиастов, стремящихся улучшить навыки аргументации и критического мышления. Присоединяйтесь к нам!</p>
+    </section>
 
-    <div class="container">
-        <section class="section">
-            <h2>Наши мероприятия</h2>
-            <div class="cards">
-                <div class="card">
-                    <img src="https://via.placeholder.com/350x200" alt="Мероприятие 1">
-                    <div class="card-content">
-                        <h3>Дебаты о будущем технологий</h3>
-                        <p>Обсуждение инновационных технологий, которые изменят наше будущее.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://via.placeholder.com/350x200" alt="Мероприятие 2">
-                    <div class="card-content">
-                        <h3>Этика и технологии</h3>
-                        <p>Дебаты о моральных аспектах искусственного интеллекта и других технологий.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://via.placeholder.com/350x200" alt="Мероприятие 3">
-                    <div class="card-content">
-                        <h3>Глобальные проблемы современности</h3>
-                        <p>Дискуссия на тему глобальных вызовов для человечества.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section>
+        <h2>Наши члены</h2>
+        <div class="team-member">
+            <h3>Иван Иванов</h3>
+            <p>Председатель клуба</p>
+        </div>
+        <div class="team-member">
+            <h3>Мария Петрова</h3>
+            <p>Координатор событий</p>
+        </div>
+        <div class="team-member">
+            <h3>Алексей Смирнов</h3>
+            <p>Аргументатор</p>
+        </div>
+    </section>
 
-        <section class="section">
-            <h2>О клубе Mangilik</h2>
-            <p>Наш клуб объединяет людей, увлеченных искусством дебатов, философией и развитием аналитического мышления. Мы организуем мероприятия, на которых участники могут обмениваться мнениями и вырабатывать аргументы по самым разным вопросам.</p>
-        </section>
-
-        <section class="section">
-            <h2>Последние статьи</h2>
-            <div class="cards">
-                <div class="card">
-                    <div class="card-content">
-                        <h3>Роль дебатов в современном обществе</h3>
-                        <p>Дебаты развивают критическое мышление и помогают принимать взвешенные решения.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-content">
-                        <h3>Как стать мастером аргументации</h3>
-                        <p>Практические советы для улучшения ваших навыков ведения дебатов.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-content">
-                        <h3>Мифы о дебатах</h3>
-                        <p>Развенчание популярных заблуждений о дебатах и их роли в жизни общества.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+    <section class="animation-container">
+        <div></div>
+        <div></div>
+        <div></div>
+    </section>
 
     <footer>
-        <p>&copy; 2025 Дебатный клуб Mangilik. Все права защищены.</p>
+        <p>Дебатный клуб &copy; 2025</p>
     </footer>
 
 </body>
