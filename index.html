@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mangilik</title>
+  <title>MANGILIK</title>
   <style>
     /* Основные стили */
     * {
@@ -26,7 +26,7 @@
     /* Шапка с анимацией появления */
     header {
       height: 100vh;
-      background: url('https://via.placeholder.com/1920x1080?text=Debate+Club') center/cover no-repeat;
+      background: url('https://via.placeholder.com/1920x1080?text=MANGILIK') center/cover no-repeat;
       filter: grayscale(100%);
       position: relative;
       display: flex;
@@ -182,36 +182,15 @@
     @keyframes cardFade {
       to { opacity: 1; transform: translateY(0); }
     }
-    /* Форма обратной связи */
-    form {
-      max-width: 500px;
-      margin: 0 auto;
+    /* Секция Telegram */
+    .telegram-section .btn {
+      background-color: #0088cc;
+      border-color: #0088cc;
     }
-    form input, form textarea {
-      width: 100%;
-      padding: 15px;
-      margin-bottom: 15px;
-      border: none;
-      border-radius: 4px;
-      font-size: 1em;
-    }
-    form input {
-      height: 50px;
-    }
-    form button {
-      width: 100%;
-      padding: 15px;
-      border: 2px solid #fff;
-      background: none;
+    .telegram-section .btn:hover {
+      background-color: #00aaff;
+      border-color: #00aaff;
       color: #fff;
-      font-size: 1em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    form button:hover {
-      background: #fff;
-      color: #000;
     }
     /* Футер */
     footer {
@@ -237,6 +216,24 @@
     .back-to-top.show {
       opacity: 1;
     }
+    /* Адаптивность под телефоны */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5em;
+      }
+      header p {
+        font-size: 1.2em;
+      }
+      nav ul {
+        flex-direction: column;
+      }
+      nav li {
+        margin: 10px 0;
+      }
+      .card {
+        width: 90%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -252,7 +249,7 @@
   <!-- Шапка -->
   <header id="home">
     <div class="header-content">
-      <h1>Дебатный клуб</h1>
+      <h1>MANGILIK</h1>
       <p>Интеллектуальные баталии в монохроме</p>
       <a href="#events" class="btn">Узнать больше</a>
     </div>
@@ -282,26 +279,22 @@
     <p>Обсуждайте актуальные темы в режиме онлайн. Наш форум – место обмена идеями и аргументами.</p>
     <a href="#" class="btn">Перейти на форум</a>
   </section>
-  <!-- Секция "Контакты" -->
-  <section class="section" id="contact">
+  <!-- Секция "Контакты" с кнопкой Telegram -->
+  <section class="section telegram-section" id="contact">
     <h2>Контакты</h2>
-    <p>Свяжитесь с нами через форму обратной связи. Мы всегда открыты для конструктивного диалога.</p>
-    <form onsubmit="return false;">
-      <input type="email" placeholder="Ваш email" required>
-      <textarea rows="5" placeholder="Ваше сообщение" required></textarea>
-      <button type="submit">Отправить</button>
-    </form>
+    <p>Присоединяйтесь к нашему Telegram-каналу, чтобы быть в курсе последних новостей и обсуждений.</p>
+    <a href="https://t.me/your_telegram_channel" target="_blank" class="btn">Telegram</a>
   </section>
   <!-- Дополнительная секция с эффектом параллакса -->
-  <section class="section" style="background: url('https://via.placeholder.com/1920x1080?text=Debate+Night') center/cover no-repeat; filter: grayscale(100%); position: relative;">
+  <section class="section" style="background: url('https://via.placeholder.com/1920x1080?text=MANGILIK+Night') center/cover no-repeat; filter: grayscale(100%); position: relative;">
     <div style="background: rgba(0,0,0,0.7); padding: 80px 20px;">
-      <h2>Ночь дебатов</h2>
+      <h2>MANGILIK Night</h2>
       <p>Погрузитесь в атмосферу ночных интеллектуальных баталий под звёздным небом.</p>
     </div>
   </section>
   <!-- Футер -->
   <footer>
-    <p>&copy; 2025 Дебатный клуб. Все права защищены.</p>
+    <p>&copy; 2025 MANGILIK. Все права защищены.</p>
   </footer>
   <!-- Кнопка "Наверх" -->
   <div class="back-to-top" id="backToTop">Наверх</div>
@@ -334,9 +327,7 @@
 
     // Дополнительная анимация при появлении секций при скролле (Intersection Observer)
     const sections = document.querySelectorAll('.section');
-    const options = {
-      threshold: 0.2
-    };
+    const options = { threshold: 0.2 };
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if(entry.isIntersecting) {
