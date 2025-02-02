@@ -3,103 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Дебатный клуб Mangilik</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fff;
-            color: #333;
+            background-color: #f4f4f9;
         }
         header {
-            background-color: #000;
-            color: #fff;
+            background-color: #2c3e50;
+            color: white;
             padding: 20px;
             text-align: center;
         }
         nav {
-            background-color: #222;
+            background-color: #34495e;
             overflow: hidden;
         }
         nav a {
-            color: #fff;
+            color: white;
             padding: 14px 20px;
-            display: inline-block;
             text-decoration: none;
+            float: left;
+            display: block;
             text-align: center;
         }
         nav a:hover {
-            background-color: #555;
-            color: #fff;
+            background-color: #1abc9c;
         }
-        section {
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .section {
+            padding: 40px 0;
+        }
+        .section h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .cards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .card {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+        .card-content {
             padding: 20px;
-            margin: 20px;
+        }
+        .card h3 {
+            margin: 0;
+            color: #34495e;
         }
         footer {
-            background-color: #000;
-            color: #fff;
+            background-color: #2c3e50;
+            color: white;
             text-align: center;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
+            padding: 20px;
+            position: relative;
             bottom: 0;
-        }
-        h2 {
-            border-bottom: 2px solid #000;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        ul li {
-            padding: 5px 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>Дебатный клуб Mangilik</h1>
-        <p>Обсуждаем важные темы, развиваем умение аргументировать!</p>
+        <h1>Добро пожаловать в Дебатный клуб Mangilik!</h1>
+        <p>Развиваем искусство аргументации и публичных выступлений</p>
     </header>
 
     <nav>
-        <a href="#about">О клубе</a>
-        <a href="#events">События</a>
-        <a href="#contacts">Контакты</a>
+        <a href="#">Главная</a>
+        <a href="#">О клубе</a>
+        <a href="#">Мероприятия</a>
+        <a href="#">Статьи</a>
+        <a href="#">Контакты</a>
     </nav>
 
-    <section id="about">
-        <h2>О клубе</h2>
-        <p>Дебатный клуб Mangilik — это место для тех, кто любит умные и содержательные дискуссии. Мы организуем регулярные дебаты на различные темы, где участники могут развивать свои ораторские навыки, учиться аргументировать и критически мыслить.</p>
-    </section>
+    <div class="container">
+        <section class="section">
+            <h2>Наши мероприятия</h2>
+            <div class="cards">
+                <div class="card">
+                    <img src="https://via.placeholder.com/350x200" alt="Мероприятие 1">
+                    <div class="card-content">
+                        <h3>Дебаты о будущем технологий</h3>
+                        <p>Обсуждение инновационных технологий, которые изменят наше будущее.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/350x200" alt="Мероприятие 2">
+                    <div class="card-content">
+                        <h3>Этика и технологии</h3>
+                        <p>Дебаты о моральных аспектах искусственного интеллекта и других технологий.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/350x200" alt="Мероприятие 3">
+                    <div class="card-content">
+                        <h3>Глобальные проблемы современности</h3>
+                        <p>Дискуссия на тему глобальных вызовов для человечества.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="events">
-        <h2>События</h2>
-        <p>Следите за нашими регулярными мероприятиями, где будут проходить дебаты, тренинги и другие интересные активности.</p>
-        <ul>
-            <li>Ежемесячные дебаты: 1 марта, 12 апреля, 7 мая</li>
-            <li>Ораторский тренинг: 14 февраля</li>
-            <li>Воркшоп по аргументации: 25 февраля</li>
-        </ul>
-    </section>
+        <section class="section">
+            <h2>О клубе Mangilik</h2>
+            <p>Наш клуб объединяет людей, увлеченных искусством дебатов, философией и развитием аналитического мышления. Мы организуем мероприятия, на которых участники могут обмениваться мнениями и вырабатывать аргументы по самым разным вопросам.</p>
+        </section>
 
-    <section id="contacts">
-        <h2>Контакты</h2>
-        <p>Для того чтобы стать частью нашего клуба или узнать больше, свяжитесь с нами:</p>
-        <ul>
-            <li>Email: contact@mangilikdebates.kz</li>
-            <li>Телефон: +7 700 123 4567</li>
-            <li>Адрес: ул. Примерная, 10, Алматы</li>
-        </ul>
-    </section>
+        <section class="section">
+            <h2>Последние статьи</h2>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Роль дебатов в современном обществе</h3>
+                        <p>Дебаты развивают критическое мышление и помогают принимать взвешенные решения.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Как стать мастером аргументации</h3>
+                        <p>Практические советы для улучшения ваших навыков ведения дебатов.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Мифы о дебатах</h3>
+                        <p>Развенчание популярных заблуждений о дебатах и их роли в жизни общества.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <footer>
-        <p>© 2025 Дебатный клуб Mangilik. Все права защищены.</p>
+        <p>&copy; 2025 Дебатный клуб Mangilik. Все права защищены.</p>
     </footer>
+
 </body>
 </html>
