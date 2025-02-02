@@ -333,7 +333,7 @@
         if(entry.isIntersecting) {
           entry.target.querySelectorAll('h2, p, .card').forEach(el => {
             el.style.animationPlayState = 'running';
-          });
+         });
           observer.unobserve(entry.target);
         }
       });
