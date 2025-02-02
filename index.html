@@ -3,124 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Дебатный клуб Mangilik</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #fff;
+            color: #333;
         }
         header {
-            background: #333;
-            color: white;
-            padding: 15px;
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
             text-align: center;
         }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            text-align: center;
+        nav {
+            background-color: #222;
+            overflow: hidden;
         }
-        nav ul li {
-            display: inline;
-            margin-right: 15px;
-        }
-        nav ul li a {
-            color: white;
+        nav a {
+            color: #fff;
+            padding: 14px 20px;
+            display: inline-block;
             text-decoration: none;
-            font-size: 18px;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #555;
+            color: #fff;
         }
         section {
             padding: 20px;
-            background: white;
-            margin: 20px auto;
-            max-width: 800px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1, h2 {
-            text-align: center;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        label, input {
-            width: 80%;
-            margin: 5px 0;
-        }
-        input {
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            padding: 10px 15px;
-            background: #333;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #555;
+            margin: 20px;
         }
         footer {
+            background-color: #000;
+            color: #fff;
             text-align: center;
-            background: #333;
-            color: white;
             padding: 10px;
-            margin-top: 20px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        h2 {
+            border-bottom: 2px solid #000;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            padding: 5px 0;
         }
     </style>
 </head>
 <body>
-
     <header>
         <h1>Дебатный клуб Mangilik</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">О клубе</a></li>
-                <li><a href="#schedule">Расписание</a></li>
-                <li><a href="#resources">Ресурсы</a></li>
-                <li><a href="#register">Регистрация</a></li>
-            </ul>
-        </nav>
+        <p>Обсуждаем важные темы, развиваем умение аргументировать!</p>
     </header>
+
+    <nav>
+        <a href="#about">О клубе</a>
+        <a href="#events">События</a>
+        <a href="#contacts">Контакты</a>
+    </nav>
 
     <section id="about">
         <h2>О клубе</h2>
-        <p>Дебатный клуб Mangilik — это сообщество студентов, развивающих ораторские и аналитические навыки.</p>
+        <p>Дебатный клуб Mangilik — это место для тех, кто любит умные и содержательные дискуссии. Мы организуем регулярные дебаты на различные темы, где участники могут развивать свои ораторские навыки, учиться аргументировать и критически мыслить.</p>
     </section>
 
-    <section id="schedule">
-        <h2>Расписание мероприятий</h2>
-        <p>Здесь будут размещаться предстоящие дебаты и тренировки.</p>
+    <section id="events">
+        <h2>События</h2>
+        <p>Следите за нашими регулярными мероприятиями, где будут проходить дебаты, тренинги и другие интересные активности.</p>
+        <ul>
+            <li>Ежемесячные дебаты: 1 марта, 12 апреля, 7 мая</li>
+            <li>Ораторский тренинг: 14 февраля</li>
+            <li>Воркшоп по аргументации: 25 февраля</li>
+        </ul>
     </section>
 
-    <section id="resources">
-        <h2>Ресурсы</h2>
-        <p>Материалы и статьи для подготовки к дебатам.</p>
-    </section>
-
-    <section id="register">
-        <h2>Регистрация</h2>
-        <form action="#" method="POST">
-            <label for="name">Имя:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <button type="submit">Отправить</button>
-        </form>
+    <section id="contacts">
+        <h2>Контакты</h2>
+        <p>Для того чтобы стать частью нашего клуба или узнать больше, свяжитесь с нами:</p>
+        <ul>
+            <li>Email: contact@mangilikdebates.kz</li>
+            <li>Телефон: +7 700 123 4567</li>
+            <li>Адрес: ул. Примерная, 10, Алматы</li>
+        </ul>
     </section>
 
     <footer>
-        <p>&copy; 2025 Дебатный клуб Mangilik</p>
+        <p>© 2025 Дебатный клуб Mangilik. Все права защищены.</p>
     </footer>
-
 </body>
 </html>
