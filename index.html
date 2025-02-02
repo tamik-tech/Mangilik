@@ -5,128 +5,138 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Дебатный клуб</title>
   <style>
-    /* Базовые стили */
-    body {
+    /* Основные стили */
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: Arial, sans-serif;
+      padding: 0;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
       background-color: #000;
       color: #fff;
+      line-height: 1.6;
       overflow-x: hidden;
+      scroll-behavior: smooth;
     }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    /* Шапка с анимацией появления */
     header {
-      background-color: #111;
-      text-align: center;
-      padding: 50px 20px;
+      height: 100vh;
+      background: url('https://via.placeholder.com/1920x1080?text=Debate+Club') center/cover no-repeat;
+      filter: grayscale(100%);
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+    header .header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 20px;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
     }
     header h1 {
-      font-size: 3em;
-      margin: 0;
-      opacity: 0;
-      animation: fadeInDown 1.5s forwards;
+      font-size: 4em;
+      margin-bottom: 20px;
     }
     header p {
-      font-size: 1.2em;
-      margin-top: 20px;
-      opacity: 0;
-      animation: fadeInUp 1.5s forwards;
-      animation-delay: 0.5s;
+      font-size: 1.5em;
     }
-    /* Анимации */
-    @keyframes fadeInDown {
-      0% { opacity: 0; transform: translateY(-20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
+    @keyframes fadeIn {
+      to { opacity: 1; }
     }
     /* Навигация */
     nav {
-      background-color: #222;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(0,0,0,0.8);
       display: flex;
       justify-content: center;
-      padding: 10px 0;
+      padding: 15px 0;
+      z-index: 1000;
     }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 15px;
-      font-size: 1.1em;
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    nav li {
+      margin: 0 20px;
       position: relative;
     }
-    nav a::after {
+    nav li::after {
       content: "";
       position: absolute;
-      width: 0;
+      width: 0%;
       height: 2px;
-      bottom: -3px;
-      left: 50%;
       background: #fff;
-      transition: width 0.3s, left 0.3s;
-    }
-    nav a:hover::after {
-      width: 100%;
+      bottom: -5px;
       left: 0;
+      transition: 0.3s;
+    }
+    nav li:hover::after {
+      width: 100%;
     }
     /* Основной контент */
-    .content {
-      padding: 50px 20px;
+    .section {
+      padding: 80px 20px;
       text-align: center;
     }
-    section {
-      margin-bottom: 80px;
+    .section:nth-child(even) {
+      background-color: #111;
     }
-    h2 {
-      font-size: 2em;
-      margin-bottom: 20px;
+    .section h2 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideIn 1s forwards;
     }
-    p {
-      font-size: 1.1em;
-      line-height: 1.6;
+    .section p {
+      font-size: 1.2em;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideIn 1s forwards;
+      animation-delay: 0.3s;
     }
-    /* Карточки мероприятий */
-    .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
+    @keyframes slideIn {
+      to { opacity: 1; transform: translateY(0); }
     }
-    .card {
-      background: #111;
-      border: 1px solid #333;
-      width: 300px;
-      padding: 20px;
-      border-radius: 8px;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(255,255,255,0.2);
-    }
-    .card h3 {
-      margin-top: 0;
-      font-size: 1.5em;
-    }
-    /* Интерактивные кнопки */
-    .interactive-button {
+    /* Кнопки */
+    .btn {
       display: inline-block;
       padding: 15px 30px;
       border: 2px solid #fff;
       color: #fff;
       text-transform: uppercase;
       font-weight: bold;
-      text-decoration: none;
-      margin-top: 20px;
-      transition: background 0.3s, color 0.3s;
       position: relative;
       overflow: hidden;
+      transition: background-color 0.3s, color 0.3s;
     }
-    .interactive-button:hover {
-      background: #fff;
+    .btn:hover {
+      background-color: #fff;
       color: #000;
     }
-    .interactive-button::before {
+    .btn::before {
       content: "";
       position: absolute;
       top: 50%;
@@ -137,101 +147,158 @@
       transform: translateY(-50%) rotate(45deg);
       transition: left 0.5s;
     }
-    .interactive-button:hover::before {
+    .btn:hover::before {
       left: 150%;
     }
+    /* Карточки событий */
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .card {
+      background-color: #222;
+      border: 1px solid #333;
+      width: 300px;
+      padding: 20px;
+      border-radius: 8px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: cardFade 1s forwards;
+    }
+    .card:nth-child(1) { animation-delay: 0.2s; }
+    .card:nth-child(2) { animation-delay: 0.4s; }
+    .card:nth-child(3) { animation-delay: 0.6s; }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255,255,255,0.2);
+    }
+    .card h3 {
+      margin-bottom: 15px;
+      font-size: 1.5em;
+    }
+    @keyframes cardFade {
+      to { opacity: 1; transform: translateY(0); }
+    }
     /* Форма обратной связи */
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+    }
     form input, form textarea {
-      padding: 10px;
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 15px;
       border: none;
       border-radius: 4px;
-      margin-bottom: 10px;
-      width: 250px;
+      font-size: 1em;
+    }
+    form input {
+      height: 50px;
     }
     form button {
-      border: none;
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #fff;
       background: none;
+      color: #fff;
+      font-size: 1em;
+      text-transform: uppercase;
       cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    form button:hover {
+      background: #fff;
+      color: #000;
     }
     /* Футер */
     footer {
       background-color: #111;
+      padding: 40px 20px;
       text-align: center;
-      padding: 20px;
+      font-size: 0.9em;
     }
     /* Кнопка "Наверх" */
     .back-to-top {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #222;
+      bottom: 30px;
+      right: 30px;
+      padding: 12px 16px;
       border: 2px solid #fff;
-      padding: 10px 15px;
+      background-color: #222;
       color: #fff;
       cursor: pointer;
       opacity: 0;
       transition: opacity 0.3s;
+      z-index: 1000;
     }
-    .back-to-top.visible {
+    .back-to-top.show {
       opacity: 1;
     }
   </style>
 </head>
 <body>
-  <!-- Шапка -->
-  <header>
-    <h1>Дебатный клуб</h1>
-    <p>Место интеллектуальных баталий и обсуждений</p>
-  </header>
   <!-- Навигация -->
   <nav>
-    <a href="#home">Главная</a>
-    <a href="#events">Мероприятия</a>
-    <a href="#forum">Форум</a>
-    <a href="#contact">Контакты</a>
+    <ul>
+      <li><a href="#home">Главная</a></li>
+      <li><a href="#events">События</a></li>
+      <li><a href="#forum">Форум</a></li>
+      <li><a href="#contact">Контакты</a></li>
+    </ul>
   </nav>
-  <!-- Основной контент -->
-  <div class="content" id="home">
-    <section>
-      <h2>Добро пожаловать</h2>
-      <p>На нашем сайте вы найдёте актуальные новости и анонсы предстоящих дебатов. Погрузитесь в атмосферу интеллектуальных обсуждений!</p>
-      <a href="#events" class="interactive-button">Узнать больше</a>
-    </section>
-    <section id="events">
-      <h2>Мероприятия</h2>
-      <div class="card-container">
-        <div class="card">
-          <h3>Дебаты о технологиях</h3>
-          <p>Обсуждение новейших трендов в IT и цифровой революции.</p>
-        </div>
-        <div class="card">
-          <h3>Экологические дебаты</h3>
-          <p>Актуальные вопросы охраны окружающей среды и устойчивого развития.</p>
-        </div>
-        <div class="card">
-          <h3>Политические дебаты</h3>
-          <p>Глубокий анализ современных политических процессов.</p>
-        </div>
+  <!-- Шапка -->
+  <header id="home">
+    <div class="header-content">
+      <h1>Дебатный клуб</h1>
+      <p>Интеллектуальные баталии в монохроме</p>
+      <a href="#events" class="btn">Узнать больше</a>
+    </div>
+  </header>
+  <!-- Секция "События" -->
+  <section class="section" id="events">
+    <h2>События</h2>
+    <p>Следите за нашими регулярными мероприятиями. Каждое событие – новая возможность для глубоких дискуссий.</p>
+    <div class="card-container">
+      <div class="card">
+        <h3>Технологические дебаты</h3>
+        <p>Обсуждение последних трендов и инноваций в мире технологий.</p>
       </div>
-    </section>
-    <section id="forum">
-      <h2>Форум</h2>
-      <p>Обсуждайте актуальные темы в режиме реального времени. Здесь вы можете обменяться мнениями и аргументами.</p>
-      <a href="#" class="interactive-button">Перейти на форум</a>
-    </section>
-    <section id="contact">
-      <h2>Контакты</h2>
-      <p>Свяжитесь с нами через форму обратной связи. Мы ценим каждое сообщение!</p>
-      <!-- Форма без персональных данных -->
-      <form onsubmit="return false;">
-        <input type="email" placeholder="Ваш email" required>
-        <br>
-        <textarea placeholder="Ваше сообщение" required></textarea>
-        <br>
-        <button type="submit" class="interactive-button">Отправить</button>
-      </form>
-    </section>
-  </div>
+      <div class="card">
+        <h3>Экологическая повестка</h3>
+        <p>Дискуссии о проблемах экологии и путях их решения.</p>
+      </div>
+      <div class="card">
+        <h3>Политический анализ</h3>
+        <p>Глубокий анализ современных политических процессов и событий.</p>
+      </div>
+    </div>
+  </section>
+  <!-- Секция "Форум" -->
+  <section class="section" id="forum">
+    <h2>Форум</h2>
+    <p>Обсуждайте актуальные темы в режиме онлайн. Наш форум – место обмена идеями и аргументами.</p>
+    <a href="#" class="btn">Перейти на форум</a>
+  </section>
+  <!-- Секция "Контакты" -->
+  <section class="section" id="contact">
+    <h2>Контакты</h2>
+    <p>Свяжитесь с нами через форму обратной связи. Мы всегда открыты для конструктивного диалога.</p>
+    <form onsubmit="return false;">
+      <input type="email" placeholder="Ваш email" required>
+      <textarea rows="5" placeholder="Ваше сообщение" required></textarea>
+      <button type="submit">Отправить</button>
+    </form>
+  </section>
+  <!-- Дополнительная секция с эффектом параллакса -->
+  <section class="section" style="background: url('https://via.placeholder.com/1920x1080?text=Debate+Night') center/cover no-repeat; filter: grayscale(100%); position: relative;">
+    <div style="background: rgba(0,0,0,0.7); padding: 80px 20px;">
+      <h2>Ночь дебатов</h2>
+      <p>Погрузитесь в атмосферу ночных интеллектуальных баталий под звёздным небом.</p>
+    </div>
+  </section>
   <!-- Футер -->
   <footer>
     <p>&copy; 2025 Дебатный клуб. Все права защищены.</p>
@@ -240,28 +307,48 @@
   <div class="back-to-top" id="backToTop">Наверх</div>
   <!-- Скрипты -->
   <script>
-    // Плавная прокрутка для кнопки "Наверх"
+    // Плавная прокрутка для ссылок навигации
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Кнопка "Наверх"
     const backToTop = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
-        backToTop.classList.add('visible');
+      if (window.scrollY > 400) {
+        backToTop.classList.add('show');
       } else {
-        backToTop.classList.remove('visible');
+        backToTop.classList.remove('show');
       }
     });
     backToTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Плавная прокрутка для ссылок навигации
-    document.querySelectorAll('nav a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
+    // Дополнительная анимация при появлении секций при скролле (Intersection Observer)
+    const sections = document.querySelectorAll('.section');
+    const options = {
+      threshold: 0.2
+    };
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.querySelectorAll('h2, p, .card').forEach(el => {
+            el.style.animationPlayState = 'running';
+          });
+          observer.unobserve(entry.target);
         }
       });
+    }, options);
+    sections.forEach(section => {
+      observer.observe(section);
     });
   </script>
 </body>
