@@ -1,209 +1,279 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MANGILIK</title>
-  <style>
-    /* Основные стили */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дело №2309</title>
+
+<style>
+:root{
+    --bg:#0d0d0f;
+    --card:#141418;
+    --red:#b30000;
+    --text:#e6e6e6;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family: "Courier New", monospace;
+    overflow-x:hidden;
+}
+
+/* Шум */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image: repeating-radial-gradient(circle at 0 0, rgba(255,255,255,0.02), transparent 2px);
+    pointer-events:none;
+    z-index:1000;
+}
+
+/* Частицы */
+.particles{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:-1;
+}
+
+.particle{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    opacity:0.1;
+    animation:float 15s linear infinite;
+}
+
+@keyframes float{
+    from{transform:translateY(-10vh);}
+    to{transform:translateY(110vh);}
+}
+
+/* Общие блоки */
+section{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:40px 20px;
+    text-align:center;
+    transition:opacity 1s ease;
+}
+
+h1,h2{
+    color:var(--red);
+    margin-bottom:20px;
+    letter-spacing:2px;
+}
+
+.card{
+    background:var(--card);
+    padding:30px;
+    border:1px solid var(--red);
+    max-width:400px;
+    width:100%;
+    text-align:left;
+    box-shadow:0 0 30px rgba(179,0,0,0.2);
+}
+
+button{
+    margin-top:20px;
+    padding:12px 24px;
+    background:transparent;
+    color:var(--red);
+    border:1px solid var(--red);
+    cursor:pointer;
+    font-family:inherit;
+    transition:all .3s ease;
+}
+
+button:hover{
+    background:var(--red);
+    color:white;
+}
+
+.hidden{
+    display:none;
+}
+
+/* Печатающийся текст */
+.typewriter{
+    border-right:2px solid var(--red);
+    white-space:pre-wrap;
+    overflow:hidden;
+    display:inline-block;
+}
+
+/* Затемнение */
+.fade{
+    animation:fadeIn 1s forwards;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+@media(max-width:600px){
+    .card{
+        padding:20px;
     }
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #000;
-      color: #fff;
-      line-height: 1.6;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-    }
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-    /* Шапка с анимацией появления */
-    header {
-      height: 100vh;
-      background: url('https://via.placeholder.com/1920x1080?text=MANGILIK') center/cover no-repeat;
-      filter: grayscale(100%);
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-    header::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-    }
-    header .header-content {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      padding: 20px;
-      opacity: 0;
-      animation: fadeIn 2s forwards;
-    }
-    header h1 {
-      font-size: 4em;
-      margin-bottom: 20px;
-    }
-    header p {
-      font-size: 1.5em;
-    }
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-    /* Навигация */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: rgba(0,0,0,0.8);
-      display: flex;
-      justify-content: center;
-      padding: 15px 0;
-      z-index: 1000;
-    }
-    nav ul {
-      display: flex;
-      list-style: none;
-    }
-    nav li {
-      margin: 0 20px;
-      position: relative;
-    }
-    nav li::after {
-      content: "";
-      position: absolute;
-      width: 0%;
-      height: 2px;
-      background: #fff;
-      bottom: -5px;
-      left: 0;
-      transition: 0.3s;
-    }
-    nav li:hover::after {
-      width: 100%;
-    }
-    /* Основной контент */
-    .section {
-      padding: 80px 20px;
-      text-align: center;
-    }
-    .section:nth-child(even) {
-      background-color: #111;
-    }
-    .section h2 {
-      font-size: 2.5em;
-      margin-bottom: 30px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: slideIn 1s forwards;
-    }
-    .section p {
-      font-size: 1.2em;
-      max-width: 800px;
-      margin: 0 auto 30px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: slideIn 1s forwards;
-      animation-delay: 0.3s;
-    }
-    @keyframes slideIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
-    /* Кнопки */
-    .btn {
-      display: inline-block;
-      padding: 15px 30px;
-      border: 2px solid #fff;
-      color: #fff;
-      text-transform: uppercase;
-      font-weight: bold;
-      position: relative;
-      overflow: hidden;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    .btn:hover {
-      background-color: #fff;
-      color: #000;
-    }
-    .btn::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: -50%;
-      width: 100%;
-      height: 100%;
-      background: rgba(255,255,255,0.2);
-      transform: translateY(-50%) rotate(45deg);
-      transition: left 0.5s;
-    }
-    .btn:hover::before {
-      left: 150%;
-    }
-    /* Футер */
-    footer {
-      background-color: #111;
-      padding: 40px 20px;
-      text-align: center;
-      font-size: 0.9em;
-    }
-    /* Адаптивность под телефоны */
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2.5em;
-      }
-      header p {
-        font-size: 1.2em;
-      }
-      nav ul {
-        flex-direction: column;
-      }
-      nav li {
-        margin: 10px 0;
-      }
-      .card {
-        width: 90%;
-      }
-    }
-  </style>
+}
+</style>
 </head>
 <body>
-  <!-- Навигация -->
-  <nav>
-    <ul>
-      <li><a href="#home">Главная</a></li>
-      <li><a href="#events">События</a></li>
-      <li><a href="#forum">Форум</a></li>
-      <li><a href="#contact">Контакты</a></li>
-    </ul>
-  </nav>
-  <!-- Шапка -->
-  <header id="home">
-    <div class="header-content">
-      <h1>MANGILIK</h1>
-      <p>Интеллектуальные баталии в монохроме</p>
-      <a href="#events" class="btn">Узнать больше</a>
+
+<div class="particles" id="particles"></div>
+
+<!-- Экран загрузки -->
+<section id="loading">
+    <h1 class="typewriter" id="loadingText"></h1>
+</section>
+
+<!-- Подозреваемая -->
+<section id="suspect" class="hidden">
+    <h2>Подозреваемая</h2>
+    <div class="card">
+        <p><strong>Имя:</strong> __________________</p>
+        <p><strong>Возраст:</strong> засекречено</p>
+        <p><strong>Особая примета:</strong> вызывает улыбку без причины</p>
+        <p><strong>Уровень опасности:</strong> критический для моего спокойствия</p>
+        <button onclick="showClues()">Просмотреть улики</button>
     </div>
-  </header>
-  <!-- Секция "Контакты" с кнопкой Telegram -->
-  <section class="section telegram-section" id="contact">
-    <h2>Контакты</h2>
-    <p>Присоединяйтесь к нашему Telegram-каналу, чтобы быть в курсе последних новостей и обсуждений.</p>
-    <a href="https://t.me/dc_mangilik" target="_blank" class="btn">Telegram</a>
-  </section>
-  <!-- Футер -->
-  <footer>
-    <p>Сайт находится в процессе доработки. Следите за обновлениями!</p>
-  </footer>
+</section>
+
+<!-- Улики -->
+<section id="clues" class="hidden">
+    <h2>Улики</h2>
+    <div id="clueList"></div>
+</section>
+
+<!-- Заключение -->
+<section id="conclusion" class="hidden">
+    <h2>Заключение эксперта</h2>
+    <p class="typewriter" id="conclusionText"></p>
+</section>
+
+<!-- Финал -->
+<section id="final" class="hidden">
+    <h2>Вердикт</h2>
+    <button onclick="finalMessage()">Признать вину</button>
+    <button onclick="finalMessage()">Обжаловать решение</button>
+    <p class="typewriter" id="verdictText"></p>
+</section>
+
+<script>
+
+/* Частицы */
+const particlesContainer = document.getElementById("particles");
+for(let i=0;i<40;i++){
+    let p = document.createElement("div");
+    p.classList.add("particle");
+    p.style.left = Math.random()*100+"%";
+    p.style.animationDuration = 10+Math.random()*20+"s";
+    p.style.opacity = Math.random()*0.2;
+    particlesContainer.appendChild(p);
+}
+
+/* Печать текста */
+function typeText(element, text, speed=40, callback=null){
+    let i=0;
+    element.textContent="";
+    function typing(){
+        if(i<text.length){
+            element.textContent += text.charAt(i);
+            i++;
+            setTimeout(typing, speed);
+        }else if(callback){
+            callback();
+        }
+    }
+    typing();
+}
+
+/* Загрузка */
+typeText(
+    document.getElementById("loadingText"),
+    "Открытие секретного дела №2309…",
+    50,
+    ()=>{
+        setTimeout(()=>{
+            document.getElementById("loading").classList.add("hidden");
+            document.getElementById("suspect").classList.remove("hidden");
+            document.getElementById("suspect").classList.add("fade");
+        },1000);
+    }
+);
+
+/* Улики */
+function showClues(){
+    document.getElementById("suspect").classList.add("hidden");
+    document.getElementById("clues").classList.remove("hidden");
+    document.getElementById("clues").classList.add("fade");
+
+    const clues = [
+        "Улика №1: улыбка, способная обезоружить",
+        "Улика №2: голос, нарушающий концентрацию",
+        "Улика №3: переписки до поздней ночи",
+        "Улика №4: похищенное внимание",
+        "Улика №5: постоянное присутствие в мыслях"
+    ];
+
+    let container = document.getElementById("clueList");
+    container.innerHTML="";
+    clues.forEach((clue,index)=>{
+        setTimeout(()=>{
+            let p=document.createElement("p");
+            p.textContent=clue;
+            p.style.margin="10px 0";
+            p.style.opacity="0";
+            p.style.transition="opacity 1s";
+            container.appendChild(p);
+            setTimeout(()=>p.style.opacity="1",50);
+        },index*800);
+    });
+
+    setTimeout(()=>{
+        document.getElementById("clues").classList.add("hidden");
+        document.getElementById("conclusion").classList.remove("hidden");
+        document.getElementById("conclusion").classList.add("fade");
+
+        typeText(
+            document.getElementById("conclusionText"),
+            "После тщательного анализа установлено:\nподозреваемая полностью виновна\nв похищении моего сердца.\n\n...\n\nДоказательства неопровержимы.",
+            40,
+            ()=>{
+                setTimeout(()=>{
+                    document.getElementById("conclusion").classList.add("hidden");
+                    document.getElementById("final").classList.remove("hidden");
+                    document.getElementById("final").classList.add("fade");
+                },1500);
+            }
+        );
+
+    },clues.length*800+2000);
+}
+
+/* Финальное сообщение */
+function finalMessage(){
+    typeText(
+        document.getElementById("verdictText"),
+        "\nРешение окончательное.\nПриговор — совместное свидание.\n\nОбжалованию не подлежит.",
+        50
+    );
+}
+
+</script>
+
 </body>
 </html>
